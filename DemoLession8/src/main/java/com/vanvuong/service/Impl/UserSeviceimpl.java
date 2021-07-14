@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.vanvuong.model.Student;
 import com.vanvuong.model.User;
@@ -60,6 +61,21 @@ public class UserSeviceimpl implements UserSevice {
 		userReposotory.save(user);
 		
 	}
+	@Override
+	public void apiUpdateUser(User user) {
+		// TODO Auto-generated method stub
+		User a = findByIdUser(user.getId());
+		if (StringUtils.hasText(user.getUserName()))
+		{
+			a.setUserName(user.getUserName());
+		}
+		if (StringUtils.hasText(user.getPassWord()))
+		{
+			a.setPassWord(user.getPassWord());
+		}
+		userReposotory.save(a);
+		
+	}
 
 	@Override
 	public List<User> timUser(String user) {
@@ -82,4 +98,11 @@ public class UserSeviceimpl implements UserSevice {
 		return userReposotory.findById(id).get();
 	}
 
+	@Override
+	public Boolean kiemTonTaiTheoUserName(String id) {
+		// TODO Auto-generated method stub
+		return  userReposotory.existsByUserName(id);
+	}
+
+	
 }

@@ -67,12 +67,12 @@ public class UserController {
 		
 		
 		model.addAttribute("dangNhapUserModel", new User());
-		int result = -1;
+		Boolean result = false;
 		if (StringUtils.hasText(name)) {
 
-			result = userSevice.checkInit(name);
+			result = userSevice.kiemTonTaiTheoUserName(name);
 		}
-		if (result == 1) {
+		if (result) {
 			return "home";
 		}
 		return "dangnhap";

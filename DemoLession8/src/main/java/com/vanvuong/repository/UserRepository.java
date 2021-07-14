@@ -23,4 +23,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query(value = "select count(username) from user where username = ?1",nativeQuery = true)
 	int checkInitByName(String searchValue);
 	
+	boolean existsByUserName(String a);
+	
 }

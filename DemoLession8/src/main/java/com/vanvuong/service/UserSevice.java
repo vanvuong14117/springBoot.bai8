@@ -19,15 +19,23 @@ public interface UserSevice {
 
 	public User searchUser(Integer id);
 
+
 	public void deleteByUser(User user);
 	
 	public void deleteByIdUser(int id);
 	
 	public void updateUser(User user);
+	public void apiUpdateUser(User user);
 	
 	public List<User> timUser(String user);
 	
 	public int checkInit(String name);
 	
 	public User findByIdUser(Integer id);
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	Boolean kiemTonTaiTheoUserName(String userName);
 }
